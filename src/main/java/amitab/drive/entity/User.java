@@ -1,10 +1,10 @@
 package amitab.drive.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.Instant;
+import java.util.Locale;
 import java.util.UUID;
 
 @Getter
@@ -49,5 +49,9 @@ public class User {
     @PreUpdate
     protected void onUpdate() {
         updatedAt = Instant.now();
+    }
+
+    public static String normalizeEmail(String email) {
+        return email.toLowerCase(Locale.ROOT);
     }
 }
